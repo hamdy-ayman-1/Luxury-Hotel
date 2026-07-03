@@ -1,0 +1,609 @@
+/* ============================================
+   ANIMATIONS.CSS - فندق الملاذ
+   جميع الأنيميشنات والتأثيرات الحركية
+   ============================================ */
+
+/* ---------- GSAP Animation Classes ---------- */
+/* هذه الفئات تستخدم مع GSAP للتحكم في ظهور العناصر */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.slide-down {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.image-reveal {
+  clip-path: inset(0 0 100% 0);
+}
+
+/* ---------- CSS Animations ---------- */
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float-element {
+  animation: float 3s ease-in-out infinite;
+}
+
+.float-element-delay-1 {
+  animation-delay: 0.5s;
+}
+.float-element-delay-2 {
+  animation-delay: 1s;
+}
+.float-element-delay-3 {
+  animation-delay: 1.5s;
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(201, 168, 76, 0.1) 25%,
+    rgba(201, 168, 76, 0.2) 50%,
+    rgba(201, 168, 76, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Gold Pulse */
+@keyframes gold-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.gold-pulse {
+  animation: gold-pulse 2s ease-in-out infinite;
+}
+
+/* Slow Rotation */
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slow-spin {
+  animation: slow-spin 20s linear infinite;
+}
+
+/* ---------- Hover Animations ---------- */
+
+/* Scale on Hover */
+.hover-scale {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Lift on Hover */
+.hover-lift {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Glow on Hover */
+.hover-glow {
+  transition: box-shadow 0.4s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
+}
+
+/* Border Glow on Hover */
+.hover-border-glow {
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hover-border-glow:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.1);
+}
+
+/* ---------- Card Animations ---------- */
+
+/* Card Hover Effect */
+.card-hover {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Shine Effect */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(201, 168, 76, 0.03) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  transition: transform 0.6s ease;
+}
+
+.card-shine:hover::before {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* ---------- Button Animations ---------- */
+
+/* Button Ripple (تضاف عبر JavaScript) */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Pulse */
+@keyframes btn-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.btn-pulse {
+  animation: btn-pulse 1.5s ease-in-out infinite;
+}
+
+.btn-pulse:hover {
+  animation: none;
+}
+
+/* Button Shimmer */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-shimmer:hover::after {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* ---------- Image Animations ---------- */
+
+/* Image Reveal on Hover */
+.image-reveal-hover {
+  overflow: hidden;
+}
+
+.image-reveal-hover img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.6s ease;
+}
+
+.image-reveal-hover:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* Image Zoom Out */
+.image-zoom-out {
+  overflow: hidden;
+}
+
+.image-zoom-out img {
+  transform: scale(1.1);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-zoom-out:hover img {
+  transform: scale(1);
+}
+
+/* ---------- Text Animations ---------- */
+
+/* Gradient Text Animation */
+@keyframes gradient-text {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.gradient-text-animate {
+  background: var(--gold-gradient);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-text 3s ease-in-out infinite;
+}
+
+/* Typewriter Effect (عن طريق JavaScript) */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-left: 2px solid var(--gold);
+  padding-right: 8px;
+  animation: typewriter-blink 0.8s step-end infinite;
+}
+
+@keyframes typewriter-blink {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--gold);
+  }
+}
+
+/* ---------- Scroll Animations ---------- */
+
+/* Parallax Elements */
+.parallax-slow {
+  transition: transform 0.1s linear;
+}
+
+.parallax-medium {
+  transition: transform 0.08s linear;
+}
+
+.parallax-fast {
+  transition: transform 0.05s linear;
+}
+
+/* ---------- Loading Animations ---------- */
+
+/* Skeleton Loading */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 8px;
+  min-height: 20px;
+}
+
+/* ---------- Transition Animations ---------- */
+
+/* Page Transition */
+.page-transition {
+  animation: pageFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section Reveal */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Counter Animations ---------- */
+
+/* Number Counter (عن طريق JavaScript) */
+.counter-number {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* ---------- Menu Animations ---------- */
+
+/* Mobile Menu Overlay */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menu Items Animation */
+.nav-menu.open .nav-link {
+  animation: menuItemFade 0.4s ease forwards;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.nav-menu.open .nav-link:nth-child(1) { animation-delay: 0.05s; }
+.nav-menu.open .nav-link:nth-child(2) { animation-delay: 0.1s; }
+.nav-menu.open .nav-link:nth-child(3) { animation-delay: 0.15s; }
+.nav-menu.open .nav-link:nth-child(4) { animation-delay: 0.2s; }
+.nav-menu.open .nav-link:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes menuItemFade {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- Gallery Lightbox ---------- */
+
+/* Lightbox Overlay */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  cursor: pointer;
+}
+
+.lightbox-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transform: scale(0.8);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 8px;
+}
+
+.lightbox-overlay.active img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg);
+}
+
+/* ---------- WhatsApp Button Animation ---------- */
+@keyframes whatsapp-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.whatsapp-btn {
+  animation: whatsapp-bounce 2s ease-in-out infinite;
+}
+
+.whatsapp-btn:hover {
+  animation: none;
+}
+
+/* ---------- Scroll Progress Animation ---------- */
+#scroll-progress {
+  transition: width 0.1s linear;
+  background: var(--gold-gradient);
+}
+
+/* ---------- Utility Animation Classes ---------- */
+
+/* Entrance Animations (تستخدم مع Intersection Observer) */
+.entrance-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.entrance-fade.entered {
+  opacity: 1;
+}
+
+.entrance-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-up.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.entrance-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-left.entered {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.entrance-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.entrance-right.entered {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.entrance-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.entrance-scale.entered {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.stagger-children.entered > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children.entered > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children.entered > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger-children.entered > *:nth-child(4) { transition-delay: 0.2s; }
+.stagger-children.entered > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger-children.entered > *:nth-child(6) { transition-delay: 0.3s; }
+
+.stagger-children.entered > * {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>حجز · فندق الملاذ</title>
+  <meta name="description" content="احجز إقامتك في فندق الملاذ. تجربة فاخرة تنتظرك.">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="animations.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <div id="loader" role="status" aria-label="جاري تحميل الموقع">
+    <div class="loader-gold-ring"></div>
+    <p class="loader-text">جاري التحميل</p>
+  </div>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <header id="navbar" class="navbar transparent" role="navigation" aria-label="القائمة الرئيسية">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html" aria-label="الرئيسية - فندق الملاذ">
+          <span class="logo-gold">الملاذ</span>
+          <span class="logo-sub">LUXURY</span>
+        </a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="فتح أو إغلاق القائمة" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem" class="nav-link" data-page="home">الرئيسية</a></li>
+        <li role="none"><a href="about.html" role="menuitem" class="nav-link" data-page="about">عن الفندق</a></li>
+        <li role="none"><a href="contact.html" role="menuitem" class="nav-link" data-page="contact">اتصل بنا</a></li>
+        <li role="none"><a href="booking.html" role="menuitem" class="nav-link active book-now-btn" data-page="booking">احجز الآن</a></li>
+        <li role="none">
+          <button class="lang-switch" id="langToggle" aria-label="تبديل اللغة" data-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero booking-hero" aria-label="حجز الفندق">
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content container">
+        <h1 data-translate="booking_hero_title">احجز إقامتك</h1>
+        <p data-translate="booking_hero_sub">ابدأ رحلة الفخامة اليوم</p>
+      </div>
+    </section>
+
+    <section class="section booking-section" aria-label="نموذج الحجز">
+      <div class="container">
+        <div class="booking-wrapper glass-card">
+          <h2 class="booking-title" data-translate="booking_form_title">معلومات الحجز</h2>
+          <form id="bookingForm" novalidate>
+            <div class="booking-grid">
+              <div class="form-group">
+                <label for="fullName" data-translate="booking_name">الاسم الكامل</label>
+                <input type="text" id="fullName" placeholder="أدخل اسمك الكامل" required aria-required="true">
+                <span class="error-msg" data-translate="name_error">الاسم مطلوب</span>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber" data-translate="booking_phone">رقم الهاتف</label>
+                <input type="tel" id="phoneNumber" placeholder="+961 3 123 456" required aria-required="true">
+                <span class="error-msg" data-translate="phone_error">رقم هاتف غير صالح</span>
+              </div>
+              <div class="form-group">
+                <label for="emailAddress" data-translate="booking_email">البريد الإلكتروني</label>
+                <input type="email" id="emailAddress" placeholder="example@domain.com" required aria-required="true">
+                <span class="error-msg" data-translate="email_error">بريد إلكتروني غير صالح</span>
+              </div>
+              <div class="form-group">
+                <label for="countrySelect" data-translate="booking_country">الدولة</label>
+                <select id="countrySelect" required aria-required="true">
+                  <option value="">اختر الدولة</option>
+                  <option value="لبنان">لبنان</option>
+                  <option value="السعودية">المملكة العربية السعودية</option>
+                  <option value="الإمارات">الإمارات العربية المتحدة</option>
+                  <option value="قطر">قطر</option>
+                  <option value="الكويت">الكويت</option>
+                  <option value="عمان">عمان</option>
+                  <option value="البحرين">البحرين</option>
+                  <option value="مصر">مصر</option>
+                  <option value="الأردن">الأردن</option>
+                  <option value="أخرى">أخرى</option>
+                </select>
+                <span class="error-msg" data-translate="country_error">يرجى اختيار الدولة</span>
+              </div>
+              <div class="form-group">
+                <label for="checkInDate" data-translate="booking_checkin">تاريخ الوصول</label>
+                <input type="date" id="checkInDate" required aria-required="true">
+                <span class="error-msg" data-translate="date_error">يرجى اختيار تاريخ صحيح</span>
+              </div>
+              <div class="form-group">
+                <label for="checkOutDate" data-translate="booking_checkout">تاريخ المغادرة</label>
+                <input type="date" id="checkOutDate" required aria-required="true">
+                <span class="error-msg" data-translate="date_error">يرجى اختيار تاريخ صحيح</span>
+              </div>
+              <div class="form-group">
+                <label for="adultsCount" data-translate="booking_adults">عدد البالغين</label>
+                <input type="number" id="adultsCount" min="1" max="10" value="2" required aria-required="true">
+                <span class="error-msg" data-translate="number_error">يجب أن يكون العدد 1 على الأقل</span>
+              </div>
+              <div class="form-group">
+                <label for="childrenCount" data-translate="booking_children">عدد الأطفال</label>
+                <input type="number" id="childrenCount" min="0" max="6" value="0">
+              </div>
+              <div class="form-group">
+                <label for="roomType" data-translate="booking_room_type">نوع الغرفة</label>
+                <select id="roomType" required aria-required="true">
+                  <option value="">اختر نوع الغرفة</option>
+                  <option value="جناح رئاسي">جناح رئاسي</option>
+                  <option value="جناح ديلوكس">جناح ديلوكس</option>
+                  <option value="جناح الشاطئ">جناح الشاطئ</option>
+                  <option value="جناح عائلي">جناح عائلي</option>
+                  <option value="غرفة قياسية">غرفة قياسية</option>
+                </select>
+                <span class="error-msg" data-translate="room_error">يرجى اختيار نوع الغرفة</span>
+              </div>
+              <div class="form-group">
+                <label for="roomCount" data-translate="booking_rooms">عدد الغرف</label>
+                <input type="number" id="roomCount" min="1" max="5" value="1" required aria-required="true">
+                <span class="error-msg" data-translate="number_error">يجب أن يكون العدد 1 على الأقل</span>
+              </div>
+              <div class="form-group full-width">
+                <label for="specialRequests" data-translate="booking_requests">طلبات خاصة</label>
+                <textarea id="specialRequests" rows="3" placeholder="أي طلبات إضافية؟"></textarea>
+              </div>
+              <div class="form-group full-width checkbox-group">
+                <input type="checkbox" id="termsCheck" required aria-required="true">
+                <label for="termsCheck" data-translate="booking_terms">أوافق على <a href="#" data-translate="terms">الشروط والأحكام</a></label>
+                <span class="error-msg" data-translate="terms_error">يجب الموافقة على الشروط</span>
+              </div>
+            </div>
+            <button type="submit" class="btn-gold btn-full" data-translate="booking_submit">احجز الآن</button>
+            <div id="bookingFormMsg" class="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>الملاذ</h4>
+        <p data-translate="footer_desc">فخامة لا تضاهى في قلب المدينة</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="انستغرام"></a>
+          <a href="#" aria-label="Facebook"><img src="icons/facebook.svg" alt="فيسبوك"></a>
+          <a href="#" aria-label="TikTok"><img src="icons/tiktok.svg" alt="تيك توك"></a>
+          <a href="#" aria-label="YouTube"><img src="icons/youtube.svg" alt="يوتيوب"></a>
+          <a href="#" aria-label="LinkedIn"><img src="icons/linkedin.svg" alt="لينكدإن"></a>
+          <a href="#" aria-label="WhatsApp"><img src="icons/whatsapp.svg" alt="واتساب"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-translate="quick_links">روابط سريعة</h4>
+        <ul>
+          <li><a href="index.html" data-translate="home">الرئيسية</a></li>
+          <li><a href="about.html" data-translate="about">عن الفندق</a></li>
+          <li><a href="contact.html" data-translate="contact">اتصل بنا</a></li>
+          <li><a href="booking.html" data-translate="booking">احجز</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-translate="contact_info">معلومات الاتصال</h4>
+        <p>📞 +961 1 234 567</p>
+        <p>✉️ info@almaath-hotel.com</p>
+        <p>📍 بيروت، لبنان</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 الملاذ · <span data-translate="all_rights">جميع الحقوق محفوظة</span></p>
+      <p><a href="#" data-translate="privacy">سياسة الخصوصية</a> · <a href="#" data-translate="terms">الشروط والأحكام</a></p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="العودة للأعلى">↑</button>
+
+  <script src="main.js" defer></script>
+  <script src="language.js" defer></script>
+  <script src="animations.js" defer></script>
+  <script src="booking.js" defer></script>
+</body>
+</html>

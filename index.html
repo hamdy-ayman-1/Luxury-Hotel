@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>فندق الملاذ · Luxury Hotel</title>
+  <!-- SEO Meta -->
+  <meta name="description" content="فندق الملاذ - تجربة إقامة فاخرة تجمع بين الأناقة والخصوصية. غرف فندقية، منتجع صحي، مطاعم راقية.">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- Google Fonts (Arabic + English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="animations.css">
+  <!-- GSAP (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader" role="status" aria-label="جاري تحميل الموقع">
+    <div class="loader-gold-ring"></div>
+    <p class="loader-text">جاري التحميل</p>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header id="navbar" class="navbar transparent" role="navigation" aria-label="القائمة الرئيسية">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html" aria-label="الرئيسية - فندق الملاذ">
+          <span class="logo-gold">الملاذ</span>
+          <span class="logo-sub">LUXURY</span>
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="فتح أو إغلاق القائمة" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem" class="nav-link active" data-page="home">الرئيسية</a></li>
+        <li role="none"><a href="about.html" role="menuitem" class="nav-link" data-page="about">عن الفندق</a></li>
+        <li role="none"><a href="contact.html" role="menuitem" class="nav-link" data-page="contact">اتصل بنا</a></li>
+        <li role="none"><a href="booking.html" role="menuitem" class="nav-link book-now-btn" data-page="booking">احجز الآن</a></li>
+        <li role="none">
+          <button class="lang-switch" id="langToggle" aria-label="تبديل اللغة إلى الإنجليزية" data-lang="en">EN</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero" aria-label="الصفحة الرئيسية">
+    <div class="hero-video-wrapper">
+      <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.jpg" aria-label="فيديو خلفية فندق فاخر">
+        <source src="videos/Untitled design.mp4" type="video/mp4">
+        <!-- عرض صورة ثابتة إذا لم يعمل الفيديو -->
+        <img src="images/images (2).jpg" alt="فندق الملاذ - منظر فاخر" class="hero-fallback-img">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content container">
+      <h1 class="hero-title" data-translate="hero_title">اكتشف الفخامة الحقيقية</h1>
+      <p class="hero-sub" data-translate="hero_sub">إقامة لا تُنسى في قلب العاصمة</p>
+      <div class="hero-btns">
+        <a href="booking.html" class="btn-primary btn-gold" data-translate="hero_book">احجز الآن</a>
+        <a href="#rooms" class="btn-outline" data-translate="hero_explore">استكشف</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  </section>
+
+  <!-- ========== ROOMS / SUITES ========== -->
+  <section class="section rooms" id="rooms" aria-label="الأجنحة والغرف الفاخرة">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-translate="rooms_tag">إقامة راقية</span>
+        <h2 class="section-title" data-translate="rooms_title">أجنحة فاخرة</h2>
+        <p class="section-desc" data-translate="rooms_desc">تصاميم حصرية مع إطلالات خلابة وخدمة على مدار الساعة</p>
+      </div>
+      <div class="rooms-grid">
+        <article class="room-card glass-card">
+          <div class="room-img"><img src="images/room-suite.jpg" alt="جناح رئاسي" loading="lazy"></div>
+          <div class="room-info">
+            <h3 data-translate="room_presidential">جناح رئاسي</h3>
+            <p data-translate="room_pres_desc">مساحة 120 متر مربع، إطلالة بانورامية، جاكوزي خاص</p>
+            <span class="room-price">$1200 <small>/ ليلة</small></span>
+            <a href="booking.html" class="btn-sm-gold" data-translate="book_now">احجز</a>
+          </div>
+        </article>
+        <article class="room-card glass-card">
+          <div class="room-img"><img src="images/room-deluxe.jpg" alt="جناح ديلوكس" loading="lazy"></div>
+          <div class="room-info">
+            <h3 data-translate="room_deluxe">جناح ديلوكس</h3>
+            <p data-translate="room_del_desc">إطلالة على المدينة، غرفة معيشة منفصلة، خدمة 24 ساعة</p>
+            <span class="room-price">$850 <small>/ ليلة</small></span>
+            <a href="booking.html" class="btn-sm-gold" data-translate="book_now">احجز</a>
+          </div>
+        </article>
+        <article class="room-card glass-card">
+          <div class="room-img"><img src="images/room-beach.jpg" alt="جناح الشاطئ" loading="lazy"></div>
+          <div class="room-info">
+            <h3 data-translate="room_beach">جناح الشاطئ</h3>
+            <p data-translate="room_beach_desc">إطلالة مباشرة على البحر، شرفة خاصة، مدخل خاص</p>
+            <span class="room-price">$950 <small>/ ليلة</small></span>
+            <a href="booking.html" class="btn-sm-gold" data-translate="book_now">احجز</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AMENITIES ========== -->
+  <section class="section amenities" id="amenities" aria-label="المرافق والخدمات">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-translate="amenities_tag">خدمات حصرية</span>
+        <h2 class="section-title" data-translate="amenities_title">مرافق الفندق</h2>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item glass-card"><span>🏊</span><h4 data-translate="amenity_pool">مسبح لا نهائي</h4></div>
+        <div class="amenity-item glass-card"><span>🧖</span><h4 data-translate="amenity_spa">سبا &amp; جاكوزي</h4></div>
+        <div class="amenity-item glass-card"><span>🍽️</span><h4 data-translate="amenity_rest">مطعم راقٍ</h4></div>
+        <div class="amenity-item glass-card"><span>🏋️</span><h4 data-translate="amenity_gym">نادي صحي</h4></div>
+        <div class="amenity-item glass-card"><span>🏖️</span><h4 data-translate="amenity_beach">شاطئ خاص</h4></div>
+        <div class="amenity-item glass-card"><span>🏛️</span><h4 data-translate="amenity_conf">قاعات مؤتمرات</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="section gallery" id="gallery" aria-label="معرض الصور">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-translate="gallery_tag">معرض</span>
+        <h2 class="section-title" data-translate="gallery_title">لحظات من الفخامة</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/gallery-1.jpg" alt="غرفة فندق" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/gallery-2.jpg" alt="مسبح" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/gallery-3.jpg" alt="مطعم" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/gallery-4.jpg" alt="سبا" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section testimonials" id="testimonials" aria-label="آراء النزلاء">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-translate="testimonial_tag">شهادات</span>
+        <h2 class="section-title" data-translate="testimonial_title">ما يقوله ضيوفنا</h2>
+      </div>
+      <div class="testimonial-slider">
+        <div class="testimonial-slide glass-card active">
+          <p data-translate="testimonial_1">"أفضل تجربة فندقية على الإطلاق. الخدمة والتصميم يفوقان الخيال."</p>
+          <cite>– خالد عبدالله</cite>
+        </div>
+        <div class="testimonial-slide glass-card">
+          <p data-translate="testimonial_2">"إطلالة رائعة وهدوء تام. سبا ممتاز وطاقم متعاون."</p>
+          <cite>– سارة المنصور</cite>
+        </div>
+        <div class="testimonial-slide glass-card">
+          <p data-translate="testimonial_3">"فندق ملاذ هو وجهتنا الدائمة في كل زيارة. راقٍ بأناقة."</p>
+          <cite>– أحمد الفهد</cite>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button class="slide-prev" aria-label="السابق">‹</button>
+        <button class="slide-next" aria-label="التالي">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS / AWARDS ========== -->
+  <section class="section stats" aria-label="إحصائيات وجوائز">
+    <div class="container stats-grid">
+      <div class="stat-item"><span class="stat-number" data-count="2450">0</span><p data-translate="stat_guests">نزيل سعيد</p></div>
+      <div class="stat-item"><span class="stat-number" data-count="34">0</span><p data-translate="stat_awards">جائزة عالمية</p></div>
+      <div class="stat-item"><span class="stat-number" data-count="98">0</span><p data-translate="stat_satisfaction">% رضا</p></div>
+      <div class="stat-item"><span class="stat-number" data-count="12">0</span><p data-translate="stat_restaurants">مطعم فاخر</p></div>
+    </div>
+  </section>
+
+  <!-- ========== MAP & NEWSLETTER ========== -->
+  <section class="section map-news" aria-label="موقع الفندق والنشرة البريدية">
+    <div class="container map-news-grid">
+      <div class="map-wrapper glass-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.2890064322357!2d35.2133!3d33.8933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f0f8e2f8e2f8f%3A0x2f8e2f8e2f8e2f8e!2sBeirut!5e0!3m2!1sen!2slb!4v1700000000000" width="100%" height="280" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقع فندق الملاذ"></iframe>
+      </div>
+      <div class="newsletter glass-card">
+        <h3 data-translate="news_title">النشرة البريدية</h3>
+        <p data-translate="news_desc">اشترك لتحصل على عروض حصرية</p>
+        <form id="newsletterForm" novalidate>
+          <input type="email" id="newsEmail" placeholder="بريدك الإلكتروني" required aria-label="البريد الإلكتروني">
+          <button type="submit" class="btn-gold" data-translate="subscribe">اشتراك</button>
+        </form>
+        <div id="newsMsg" class="form-message"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>الملاذ</h4>
+        <p data-translate="footer_desc">فخامة لا تضاهى في قلب المدينة</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="انستغرام"></a>
+          <a href="#" aria-label="Facebook"><img src="icons/facebook.svg" alt="فيسبوك"></a>
+          <a href="#" aria-label="TikTok"><img src="icons/tiktok.svg" alt="تيك توك"></a>
+          <a href="#" aria-label="YouTube"><img src="icons/youtube.svg" alt="يوتيوب"></a>
+          <a href="#" aria-label="LinkedIn"><img src="icons/linkedin.svg" alt="لينكدإن"></a>
+          <a href="#" aria-label="WhatsApp"><img src="icons/whatsapp.svg" alt="واتساب"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-translate="quick_links">روابط سريعة</h4>
+        <ul>
+          <li><a href="index.html" data-translate="home">الرئيسية</a></li>
+          <li><a href="about.html" data-translate="about">عن الفندق</a></li>
+          <li><a href="contact.html" data-translate="contact">اتصل بنا</a></li>
+          <li><a href="booking.html" data-translate="booking">احجز</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-translate="contact_info">معلومات الاتصال</h4>
+        <p>📞 +961 1 234 567</p>
+        <p>✉️ info@almaath-hotel.com</p>
+        <p>📍 بيروت، لبنان</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 الملاذ · <span data-translate="all_rights">جميع الحقوق محفوظة</span></p>
+      <p><a href="#" data-translate="privacy">سياسة الخصوصية</a> · <a href="#" data-translate="terms">الشروط والأحكام</a></p>
+    </div>
+  </footer>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button id="backToTop" class="back-to-top" aria-label="العودة للأعلى">↑</button>
+
+  <!-- ========== JAVASCRIPT (External) ========== -->
+  <script src="main.js" defer></script>
+  <script src="language.js" defer></script>
+  <script src="animations.js" defer></script>
+  <script src="booking.js" defer></script>
+</body>
+</html>
