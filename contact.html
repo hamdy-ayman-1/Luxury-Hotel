@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>حجز · فندق الملاذ</title>
-  <meta name="description" content="احجز إقامتك في فندق الملاذ. تجربة فاخرة تنتظرك.">
+  <title>اتصل بنا · فندق الملاذ</title>
+  <meta name="description" content="تواصل مع فندق الملاذ عبر الهاتف، البريد الإلكتروني، واتساب، أو من خلال نموذج الاتصال.">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="responsive.css">
-  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
@@ -38,8 +38,8 @@
       <ul class="nav-menu" id="navMenu" role="menubar">
         <li role="none"><a href="index.html" role="menuitem" class="nav-link" data-page="home">الرئيسية</a></li>
         <li role="none"><a href="about.html" role="menuitem" class="nav-link" data-page="about">عن الفندق</a></li>
-        <li role="none"><a href="contact.html" role="menuitem" class="nav-link" data-page="contact">اتصل بنا</a></li>
-        <li role="none"><a href="booking.html" role="menuitem" class="nav-link active book-now-btn" data-page="booking">احجز الآن</a></li>
+        <li role="none"><a href="contact.html" role="menuitem" class="nav-link active" data-page="contact">اتصل بنا</a></li>
+        <li role="none"><a href="booking.html" role="menuitem" class="nav-link book-now-btn" data-page="booking">احجز الآن</a></li>
         <li role="none">
           <button class="lang-switch" id="langToggle" aria-label="تبديل اللغة" data-lang="en">EN</button>
         </li>
@@ -48,101 +48,166 @@
   </header>
 
   <main>
-    <section class="page-hero booking-hero" aria-label="حجز الفندق">
+    <section class="page-hero contact-hero" aria-label="اتصل بنا">
       <div class="page-hero-overlay"></div>
       <div class="page-hero-content container">
-        <h1 data-translate="booking_hero_title">احجز إقامتك</h1>
-        <p data-translate="booking_hero_sub">ابدأ رحلة الفخامة اليوم</p>
+        <h1 data-translate="contact_hero_title">تواصل معنا</h1>
+        <p data-translate="contact_hero_sub">نحن هنا لخدمتك على مدار الساعة</p>
       </div>
     </section>
 
-    <section class="section booking-section" aria-label="نموذج الحجز">
+    <section class="section contact-info" aria-label="معلومات الاتصال">
       <div class="container">
-        <div class="booking-wrapper glass-card">
-          <h2 class="booking-title" data-translate="booking_form_title">معلومات الحجز</h2>
-          <form id="bookingForm" novalidate>
-            <div class="booking-grid">
+        <div class="contact-grid">
+          <div class="contact-details">
+            <div class="contact-card glass-card">
+              <span>📞</span>
+              <h3 data-translate="contact_phone_title">الهاتف</h3>
+              <p>+961 1 234 567</p>
+              <p>+961 3 123 456</p>
+            </div>
+            <div class="contact-card glass-card">
+              <span>✉️</span>
+              <h3 data-translate="contact_email_title">البريد الإلكتروني</h3>
+              <p>info@almaath-hotel.com</p>
+              <p>reservations@almaath-hotel.com</p>
+            </div>
+            <div class="contact-card glass-card">
+              <span>💬</span>
+              <h3 data-translate="contact_whatsapp_title">واتساب</h3>
+              <p>+961 71 234 567</p>
+              <button class="btn-sm-gold whatsapp-btn" onclick="window.open('https://wa.me/96171234567','_blank')" data-translate="contact_whatsapp_btn">تواصل عبر واتساب</button>
+            </div>
+            <div class="contact-card glass-card">
+              <span>🕐</span>
+              <h3 data-translate="contact_hours_title">ساعات العمل</h3>
+              <p data-translate="contact_hours">الاستقبال: 24 ساعة طوال أيام الأسبوع</p>
+              <p data-translate="contact_hours_rest">المطاعم: 6:00 صباحاً - 12:00 منتصف الليل</p>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper glass-card">
+            <h2 data-translate="contact_form_title">أرسل لنا رسالة</h2>
+            <form id="contactForm" novalidate>
               <div class="form-group">
-                <label for="fullName" data-translate="booking_name">الاسم الكامل</label>
-                <input type="text" id="fullName" placeholder="أدخل اسمك الكامل" required aria-required="true">
+                <label for="contactName" data-translate="contact_name">الاسم الكامل</label>
+                <input type="text" id="contactName" placeholder="أدخل اسمك" required aria-required="true">
                 <span class="error-msg" data-translate="name_error">الاسم مطلوب</span>
               </div>
               <div class="form-group">
-                <label for="phoneNumber" data-translate="booking_phone">رقم الهاتف</label>
-                <input type="tel" id="phoneNumber" placeholder="+961 3 123 456" required aria-required="true">
-                <span class="error-msg" data-translate="phone_error">رقم هاتف غير صالح</span>
-              </div>
-              <div class="form-group">
-                <label for="emailAddress" data-translate="booking_email">البريد الإلكتروني</label>
-                <input type="email" id="emailAddress" placeholder="example@domain.com" required aria-required="true">
+                <label for="contactEmail" data-translate="contact_email">البريد الإلكتروني</label>
+                <input type="email" id="contactEmail" placeholder="example@domain.com" required aria-required="true">
                 <span class="error-msg" data-translate="email_error">بريد إلكتروني غير صالح</span>
               </div>
               <div class="form-group">
-                <label for="countrySelect" data-translate="booking_country">الدولة</label>
-                <select id="countrySelect" required aria-required="true">
-                  <option value="">اختر الدولة</option>
-                  <option value="لبنان">لبنان</option>
-                  <option value="السعودية">المملكة العربية السعودية</option>
-                  <option value="الإمارات">الإمارات العربية المتحدة</option>
-                  <option value="قطر">قطر</option>
-                  <option value="الكويت">الكويت</option>
-                  <option value="عمان">عمان</option>
-                  <option value="البحرين">البحرين</option>
-                  <option value="مصر">مصر</option>
-                  <option value="الأردن">الأردن</option>
-                  <option value="أخرى">أخرى</option>
-                </select>
-                <span class="error-msg" data-translate="country_error">يرجى اختيار الدولة</span>
+                <label for="contactPhone" data-translate="contact_phone">رقم الهاتف</label>
+                <input type="tel" id="contactPhone" placeholder="+961 3 123 456" required aria-required="true">
+                <span class="error-msg" data-translate="phone_error">رقم هاتف غير صالح</span>
               </div>
               <div class="form-group">
-                <label for="checkInDate" data-translate="booking_checkin">تاريخ الوصول</label>
-                <input type="date" id="checkInDate" required aria-required="true">
-                <span class="error-msg" data-translate="date_error">يرجى اختيار تاريخ صحيح</span>
+                <label for="contactSubject" data-translate="contact_subject">الموضوع</label>
+                <input type="text" id="contactSubject" placeholder="موضوع رسالتك" required aria-required="true">
+                <span class="error-msg" data-translate="subject_error">الموضوع مطلوب</span>
               </div>
               <div class="form-group">
-                <label for="checkOutDate" data-translate="booking_checkout">تاريخ المغادرة</label>
-                <input type="date" id="checkOutDate" required aria-required="true">
-                <span class="error-msg" data-translate="date_error">يرجى اختيار تاريخ صحيح</span>
+                <label for="contactMessage" data-translate="contact_message">الرسالة</label>
+                <textarea id="contactMessage" rows="5" placeholder="اكتب رسالتك هنا..." required aria-required="true"></textarea>
+                <span class="error-msg" data-translate="message_error">الرسالة مطلوبة</span>
               </div>
-              <div class="form-group">
-                <label for="adultsCount" data-translate="booking_adults">عدد البالغين</label>
-                <input type="number" id="adultsCount" min="1" max="10" value="2" required aria-required="true">
-                <span class="error-msg" data-translate="number_error">يجب أن يكون العدد 1 على الأقل</span>
-              </div>
-              <div class="form-group">
-                <label for="childrenCount" data-translate="booking_children">عدد الأطفال</label>
-                <input type="number" id="childrenCount" min="0" max="6" value="0">
-              </div>
-              <div class="form-group">
-                <label for="roomType" data-translate="booking_room_type">نوع الغرفة</label>
-                <select id="roomType" required aria-required="true">
-                  <option value="">اختر نوع الغرفة</option>
-                  <option value="جناح رئاسي">جناح رئاسي</option>
-                  <option value="جناح ديلوكس">جناح ديلوكس</option>
-                  <option value="جناح الشاطئ">جناح الشاطئ</option>
-                  <option value="جناح عائلي">جناح عائلي</option>
-                  <option value="غرفة قياسية">غرفة قياسية</option>
-                </select>
-                <span class="error-msg" data-translate="room_error">يرجى اختيار نوع الغرفة</span>
-              </div>
-              <div class="form-group">
-                <label for="roomCount" data-translate="booking_rooms">عدد الغرف</label>
-                <input type="number" id="roomCount" min="1" max="5" value="1" required aria-required="true">
-                <span class="error-msg" data-translate="number_error">يجب أن يكون العدد 1 على الأقل</span>
-              </div>
-              <div class="form-group full-width">
-                <label for="specialRequests" data-translate="booking_requests">طلبات خاصة</label>
-                <textarea id="specialRequests" rows="3" placeholder="أي طلبات إضافية؟"></textarea>
-              </div>
-              <div class="form-group full-width checkbox-group">
-                <input type="checkbox" id="termsCheck" required aria-required="true">
-                <label for="termsCheck" data-translate="booking_terms">أوافق على <a href="#" data-translate="terms">الشروط والأحكام</a></label>
-                <span class="error-msg" data-translate="terms_error">يجب الموافقة على الشروط</span>
-              </div>
+              <button type="submit" class="btn-gold btn-full" data-translate="contact_send">إرسال الرسالة</button>
+              <div id="contactFormMsg" class="form-message"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" style="background: var(--dark-bg);" aria-label="الأسئلة الشائعة">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-translate="faq_tag">الأسئلة الشائعة</span>
+          <h2 class="section-title" data-translate="faq_title">أجوبة على استفساراتكم</h2>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item glass-card">
+            <button class="faq-question" aria-expanded="false">
+              <span data-translate="faq_q1">ما هي سياسة الإلغاء؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-translate="faq_a1">يمكنك إلغاء الحجز مجاناً قبل 48 ساعة من تاريخ الوصول. بعد ذلك، يتم تطبيق رسوم ليلة واحدة.</p>
             </div>
-            <button type="submit" class="btn-gold btn-full" data-translate="booking_submit">احجز الآن</button>
-            <div id="bookingFormMsg" class="form-message"></div>
-          </form>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question" aria-expanded="false">
+              <span data-translate="faq_q2">هل يوجد مواقف للسيارات؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-translate="faq_a2">نعم، يتوفر موقف سيارات مجاني تحت الأرض، بالإضافة إلى خدمة صف السيارات.</p>
+            </div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question" aria-expanded="false">
+              <span data-translate="faq_q3">هل الفندق مناسب للعائلات؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-translate="faq_a3">بالتأكيد! نوفر غرف عائلية، أنشطة للأطفال، وحضانة أطفال عند الطلب.</p>
+            </div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question" aria-expanded="false">
+              <span data-translate="faq_q4">هل تسمحون بالحيوانات الأليفة؟</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-translate="faq_a4">نرحب بالحيوانات الأليفة الصغيرة (أقل من 10 كجم) مع رسوم إضافية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section map-contact" aria-label="خريطة الموقع">
+      <div class="container">
+        <div class="map-wrapper glass-card">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.2890064322357!2d35.2133!3d33.8933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f0f8e2f8e2f8f%3A0x2f8e2f8e2f8e2f8e!2sBeirut!5e0!3m2!1sen!2slb!4v1700000000000" width="100%" height="400" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقع فندق الملاذ"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section social-media" style="background: var(--dark-bg);" aria-label="وسائل التواصل الاجتماعي">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag" data-translate="social_tag">تابعنا</span>
+          <h2 class="section-title" data-translate="social_title">نحن على وسائل التواصل</h2>
+        </div>
+        <div class="social-grid">
+          <a href="#" class="social-link glass-card" aria-label="Instagram">
+            <img src="icons/instagram.svg" alt="انستغرام">
+            <span>Instagram</span>
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="Facebook">
+            <img src="icons/facebook.svg" alt="فيسبوك">
+            <span>Facebook</span>
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="TikTok">
+            <img src="icons/tiktok.svg" alt="تيك توك">
+            <span>TikTok</span>
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="YouTube">
+            <img src="icons/youtube.svg" alt="يوتيوب">
+            <span>YouTube</span>
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="LinkedIn">
+            <img src="icons/linkedin.svg" alt="لينكدإن">
+            <span>LinkedIn</span>
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="WhatsApp">
+            <img src="icons/whatsapp.svg" alt="واتساب">
+            <span>WhatsApp</span>
+          </a>
         </div>
       </div>
     </section>
@@ -186,9 +251,8 @@
 
   <button id="backToTop" class="back-to-top" aria-label="العودة للأعلى">↑</button>
 
-  <script src="main.js" defer></script>
-  <script src="language.js" defer></script>
-  <script src="animations.js" defer></script>
-  <script src="booking.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/language.js" defer></script>
+  <script src="js/animations.js" defer></script>
 </body>
 </html>
